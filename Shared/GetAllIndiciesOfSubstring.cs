@@ -1,6 +1,6 @@
 ﻿namespace Shared;
 
-public static class ListExtensions
+public static class StringExtensions
 {
     public static List<int> GetAllIndiciesOfSubstring(this string sourceString, string stringToFind)
     {
