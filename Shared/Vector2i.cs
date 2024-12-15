@@ -1,9 +1,9 @@
 ﻿namespace Shared;
 
-public struct Vector2i : IEquatable<Vector2i>
+public struct Vector2i(int x, int y) : IEquatable<Vector2i>
 {
-    public int X;
-    public int Y;
+    public int X = x;
+    public int Y = y;
 
     public bool Equals(Vector2i other)
     {
