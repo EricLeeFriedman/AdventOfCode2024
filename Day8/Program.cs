@@ -17,7 +17,7 @@ for (int y = 0; y < puzzleInput.Length; y++)
             positions = [];
             antennaPositionsByLetter.Add(c, positions);
         }
-        positions.Add(new Vector2i { X = x, Y = y});
+        positions.Add(new Vector2i(x, y));
         antennaPositionsByLetter[c] = positions;
     }
 }
@@ -58,12 +58,12 @@ foreach (var kvp in antennaPositionsByLetter)
             int x2 = otherPosition.X + (x2Magnitude * xDistance);
             int y2 = otherPosition.Y + (y2Magnitude * yDistance);
             
-            Vector2i potentialPosition1 = new Vector2i{X = x1, Y = y1};
+            Vector2i potentialPosition1 = new Vector2i(x1, y1);
             if (IsPositionValid(potentialPosition1))
             {
                 antinodePositions.Add(potentialPosition1);
             }
-            Vector2i potentialPosition2 = new Vector2i { X = x2, Y = y2 };
+            Vector2i potentialPosition2 = new Vector2i(x2, y2);
             if (IsPositionValid(potentialPosition2))
             {
                 antinodePositions.Add(potentialPosition2);

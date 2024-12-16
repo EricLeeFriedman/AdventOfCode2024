@@ -4,8 +4,8 @@ using Shared;
 //string[] puzzleInput = File.ReadAllLines("Sample.txt");
 string[] puzzleInput = File.ReadAllLines("PuzzleInput.txt");
 
-Vector2i guardLocation = new Vector2i { X = 0, Y = 0 };
-Vector2i guardDirection = new Vector2i { X = 0, Y = -1 };
+Vector2i guardLocation = new Vector2i(0, 0);
+Vector2i guardDirection = new Vector2i(0, -1);
 
 List<Vector2i> obstacles = [];
 List<Vector2i> blankSpaces = [];
@@ -17,13 +17,13 @@ for (int y = 0; y < puzzleInput.Length; y++)
         switch (line[x])
         {
             case '#':
-                obstacles.Add(new Vector2i { X = x, Y = y });
+                obstacles.Add(new Vector2i(x, y));
                 break;
             case '^':
-                guardLocation = new Vector2i { X = x, Y = y };
+                guardLocation = new Vector2i(x, y);
                 break;
             default:
-                blankSpaces.Add(new Vector2i { X = x, Y = y });
+                blankSpaces.Add(new Vector2i(x, y));
                 break;
         }
     }
@@ -78,13 +78,13 @@ void RunGuardSimulation(Vector2i location, Vector2i direction, List<Vector2i> ob
         }
 
         Vector2i nextLocation = new Vector2i
-            { X = location.X + direction.X, Y = location.Y + direction.Y };
+            (location.X + direction.X, location.Y + direction.Y);
 
         while (obstaclesToAvoid.Contains(nextLocation))
         {
             TurnDirection(ref direction);
             nextLocation = new Vector2i
-                { X = location.X + direction.X, Y = location.Y + direction.Y };
+                (location.X + direction.X, location.Y + direction.Y);
         }
 
         location = nextLocation;

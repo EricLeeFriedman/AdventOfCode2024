@@ -11,7 +11,7 @@ for (int y = 0; y < puzzleInput.Length; y++)
     for (int x = 0; x < line.Length; x++)
     {
         uint height = uint.Parse(line[x].ToString());
-        PositionToHeight.Add(new Vector2i{X = x, Y = y}, height);
+        PositionToHeight.Add(new Vector2i(x, y), height);
     }
 }
 
@@ -42,16 +42,16 @@ void RecursiveFindTrail(Vector2i startingPosition, uint currentHeight, ref HashS
     
     Vector2i[] directions =
     [
-        new() {X = 0, Y = 1},
-        new() {X = 1, Y = 0},
-        new() {X = 0, Y = -1},
-        new() {X = -1, Y = 0}
+        new(0, 1),
+        new(1, 0),
+        new(0, -1),
+        new(-1, 0)
     ];
     
     foreach (Vector2i direction in directions)
     {
         Vector2i newPosition = new Vector2i
-            { X = direction.X + startingPosition.X, Y = direction.Y + startingPosition.Y };
+            ( direction.X + startingPosition.X, direction.Y + startingPosition.Y );
 
         if (PositionToHeight.TryGetValue(newPosition, out uint nextHeight))
         {
